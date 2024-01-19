@@ -5,8 +5,6 @@ import re
 set_appearance_mode("dark")
 set_default_color_theme("dark-blue")
 
-CURSOR_WHEN_HOVER_BUTTON = "hand2"
-
 # ----------- APP CONFIG ----------- #
 
 app = CTk()
@@ -18,10 +16,6 @@ app.geometry("900x500")
 frame_border_size = 1
 border_color_rgb = (248, 43, 255)
 border_color_hex = "#{:02x}{:02x}{:02x}".format(*border_color_rgb)
-
-# Dark theme colors
-dark_bg_color = "#2E2E2E"
-dark_fg_color = "#FFFFFF"
 
 # ----------- FUNCTIONS ----------- #
 
@@ -171,7 +165,7 @@ def apply_syntax_highlighting():
 def on_char_type(event):
   typed_char = event.char
   if typed_char == '\t':
-    on_tab_press(event)
+    on_tab_press(event)  
   elif typed_char in [' ', '(', ')', '.']:
     apply_syntax_highlighting()
 
