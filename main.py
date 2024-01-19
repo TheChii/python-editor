@@ -12,7 +12,7 @@ app.title("GodTold")
 app.geometry("900x500")
 
 # ----------- STYLE CONFIG ----------- #
-
+text_font = CTkFont(family="Roboto", size=14)
 frame_border_size = 1
 border_color_rgb = (248, 43, 255)
 border_color_hex = "#{:02x}{:02x}{:02x}".format(*border_color_rgb)
@@ -165,7 +165,7 @@ def apply_syntax_highlighting():
 def on_char_type(event):
   typed_char = event.char
   if typed_char == '\t':
-    on_tab_press(event)  
+    on_tab_press(event)
   elif typed_char in [' ', '(', ')', '.']:
     apply_syntax_highlighting()
 
@@ -179,7 +179,7 @@ location_frame = CTkFrame(master=app,
                           border_width=frame_border_size)
 location_frame.pack(side="top", fill="x")
 
-location_label = CTkLabel(master=location_frame, text="")
+location_label = CTkLabel(master=location_frame, text="", font=text_font)
 location_label.pack(fill="both", expand=True)
 
 # Editor frame
@@ -197,7 +197,7 @@ editor_text = CTkTextbox(master=editor_frame,
                          undo=True,
                          autoseparators=True,
                          maxundo=20,
-                         font=CTkFont(family="Cascadia Code", size=15))
+                         font=text_font)
 editor_text.pack(fill="both", expand=True)
 
 # ----------- KEY BINDINGS ----------- #
