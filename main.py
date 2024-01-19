@@ -152,7 +152,6 @@ def apply_syntax_highlighting():
       ]):
     editor_text.tag_add(tag_type, start, end)
 
-
   for match in variable_regex.finditer(current_text):
     editor_text.tag_add("variable", f"1.0+{match.start(1)}c",
                         f"1.0+{match.end(1)}c")
@@ -201,6 +200,9 @@ editor_frame.pack(side="left", fill="both", expand=True)
 editor_text = CTkTextbox(master=editor_frame,
                          fg_color="black",
                          corner_radius=0,
+                         undo=True,
+                         autoseparators=True,
+                         maxundo=20,
                          font=CTkFont(family="Cascadia Code", size=15))
 editor_text.pack(fill="both", expand=True)
 
@@ -214,4 +216,5 @@ app.bind("<Control-v>", on_paste)
 app.bind("<Control-z>", on_undo)
 
 # editor_text.bind("<Tab>", on_tab_press)
+
 app.mainloop()
